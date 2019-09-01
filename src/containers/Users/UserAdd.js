@@ -2,38 +2,32 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { useFormInput } from '../../customHooks/formInput'
-import * as actionTypes from '../../store/actions'
+import * as actionTypes from '../../store/actionsTypes'
+import * as formFields from '../../data/dataConfigSetup'
 
+import Alert from '../../components/UI/Alert/Alert'
 import Button from '../../components/Buttons/Button'
 import Checkbox from '../../components/UI/Form/Checkbox'
+import Heading from '../../components/UI/Text/Heading'
 import Input from '../../components/UI/Form/Input'
 import Select from '../../components/UI/Form/Select'
 import Textarea from '../../components/UI/Form/Textarea'
-import Alert from '../../components/UI/Alert/Alert'
-
-import {
-  inputNameConfig,
-  inputSurnameConfig,
-  inputEmailConfig,
-  textareaBioConfig,
-  selectGenderConfig,
-  checkboxNewsletterConfig,
-} from '../../data/dataConfigSetup'
 
 const FormAdd = props => {
-  const inputName = useFormInput(inputNameConfig)
-  const inputSurname = useFormInput(inputSurnameConfig)
-  const inputEmail = useFormInput(inputEmailConfig)
-  const textareaBio = useFormInput(textareaBioConfig)
+  const inputName = useFormInput(formFields.inputNameConfig)
+  const inputSurname = useFormInput(formFields.inputSurnameConfig)
+  const inputEmail = useFormInput(formFields.inputEmailConfig)
+  const textareaBio = useFormInput(formFields.textareaBioConfig)
   const selectGender = useFormInput(
-    selectGenderConfig,
-    selectGenderConfig.options[0]
+    formFields.selectGenderConfig,
+    formFields.selectGenderConfig.options[0]
   )
-  const checkboxNewsletter = useFormInput(checkboxNewsletterConfig, true)
+  const checkboxNewsletter = useFormInput(formFields.checkboxNewsletterConfig, true)
 
   const [isFormValid, setFormValid] = useState(false)
   const [showAlertSuccess, setShowAlertSuccess] = useState(false)
 
+  // Run each time an input (with validation on) changes, to check if the form is valid
   useEffect(() => {
     let formValidity =
       inputName.isValid && inputSurname.isValid && inputEmail.isValid
@@ -42,6 +36,7 @@ const FormAdd = props => {
 
   // Show alert for 7 seconds if form submit success
   useEffect(() => {
+    console.log('useEffect')
     let timer = setTimeout(() => {
       setShowAlertSuccess(false)
     }, 7000)
@@ -67,7 +62,7 @@ const FormAdd = props => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-    console.log({ isFormValid })
+    setShowAlertSuccess(false)
     if (isFormValid) {
       const user = {
         id: props.userList.length + 1,
@@ -78,19 +73,15 @@ const FormAdd = props => {
         gender: selectGender.value,
         newsletter: checkboxNewsletter.value,
       }
-
-      console.log({ user })
-
       props.userAddToStore(user)
       resetForm()
-
       setShowAlertSuccess(true)
     }
   }
 
   return (
     <div>
-      <h1 className="text-3xl">Add User</h1>
+      <Heading text="Add User" />
       {showAlertSuccess ? (
         <Alert
           title="User successfully added!"
@@ -100,7 +91,7 @@ const FormAdd = props => {
       ) : null}
       <form
         onSubmit={handleFormSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded lg:px-48 sm:px-16 pt-6 pb-8 mb-4"
       >
         <Input {...inputName} />
         <Input {...inputSurname} />

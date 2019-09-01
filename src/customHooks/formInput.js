@@ -34,8 +34,7 @@ export const useFormInput = (inputConfig, valueInit = '', isValidInit = null) =>
   }
 
   const validate = event => {
-    // console.log(config.validation.rules)
-
+    // Validate email rule with simple regex
     if (config.validation.rules.email) {
       let regex = /\S+@\S+\.\S+/
 
@@ -46,6 +45,7 @@ export const useFormInput = (inputConfig, valueInit = '', isValidInit = null) =>
       }
     }
 
+    // Validate required rule
     if (config.validation.rules.required) {
       if (event.target.value.trim() === '') {
         rulesBroken = { ...rulesBroken, required: true }

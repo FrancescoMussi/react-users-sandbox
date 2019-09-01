@@ -43,18 +43,17 @@ const Select = props => {
 }
 
 Select.propTypes = {
-  errorMessage: PropTypes.string,
-  isTouched: PropTypes.bool,
-  isValid: PropTypes.bool,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  errorMessage: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  type: PropTypes.string,
   options: PropTypes.array.isRequired,
+  isTouched: PropTypes.bool,
+  isValid: PropTypes.bool,  
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
-  reset: PropTypes.func,
 }
 
 export default Select

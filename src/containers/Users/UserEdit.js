@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import * as actionTypes from '../../store/actions'
+import * as actionTypes from '../../store/actionsTypes'
 import { useFormInput } from '../../customHooks/formInput'
 import {
   inputNameConfig,
@@ -14,6 +14,7 @@ import {
 
 import Button from '../../components/Buttons/Button'
 import Checkbox from '../../components/UI/Form/Checkbox'
+import Heading from '../../components/UI/Text/Heading'
 import Input from '../../components/UI/Form/Input'
 import Select from '../../components/UI/Form/Select'
 import Textarea from '../../components/UI/Form/Textarea'
@@ -46,6 +47,7 @@ const UserEdit = props => {
     props.location.user.newsletter
   )
 
+  // Run each time an input (with validation on) changes, to check if the form is valid
   useEffect(() => {
     const formValidity =
       inputName.isValid && inputSurname.isValid && inputEmail.isValid
@@ -54,7 +56,6 @@ const UserEdit = props => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-
     if (isFormValid) {
       const user = {
         id: props.location.user.id,
@@ -65,9 +66,6 @@ const UserEdit = props => {
         gender: selectGender.value,
         newsletter: checkboxNewsletter.value,
       }
-
-      console.log({ user })
-
       props.userEdit(user)
       props.history.push('/')
     }
@@ -89,10 +87,10 @@ const UserEdit = props => {
 
   return (
     <div>
-      <h1 className="text-3xl">Edit User</h1>
+      <Heading text="Edit User" />
       <form
         onSubmit={handleFormSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded px-64 pt-6 pb-8 mb-4"
       >
         <Input {...inputName} />
         <Input {...inputSurname} />

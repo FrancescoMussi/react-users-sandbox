@@ -9,6 +9,9 @@ const Button = props => {
   let classes = []
 
   switch (props.theme) {
+    case 'success':
+      themedClasses = ['bg-green-500', 'hover:bg-green-700', 'text-white']
+      break
     case 'info':
       themedClasses = ['bg-blue-500', 'hover:bg-blue-700', 'text-white']
       break
@@ -39,18 +42,21 @@ const Button = props => {
       onClick={props.onClick}
       disabled={props.isDisabled}
     >
+      {props.icon}
       {props.text}
     </button>
   )
 }
 
 Button.propTypes = {
-  text: PropTypes.string,
-  type: PropTypes.string,
-  theme: PropTypes.string,
-  isDisabled: PropTypes.bool,
   extraClasses: PropTypes.array,
+  icon: PropTypes.element,
+  text: PropTypes.string,
+  theme: PropTypes.string,
+  type: PropTypes.string,
+  isDisabled: PropTypes.bool,  
   onClick: PropTypes.func,
+  
 }
 
 export default Button

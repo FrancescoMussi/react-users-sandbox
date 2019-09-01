@@ -8,8 +8,10 @@ const Alert = props => {
     'mb-0',
     'border-t-4',
     'rounded-b',
-    'px-4',
     'py-3',
+    'px-4',
+    'sm:mx-16',
+    'lg:mx-48',
     'shadow-md',
   ]
   let svgDefaultClasses = ['fill-current', 'h-6', 'w-6', 'mr-4']

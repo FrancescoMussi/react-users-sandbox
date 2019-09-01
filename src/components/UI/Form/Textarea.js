@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TextArea = props => {
-
   let errorMessage = null
   let inputClasses = [
     'shadow',
@@ -52,18 +51,17 @@ const TextArea = props => {
 }
 
 TextArea.propTypes = {
-  errorMessage: PropTypes.string,
-  isTouched: PropTypes.bool,
-  isValid: PropTypes.bool,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   placeholder: PropTypes.string,
-  type: PropTypes.string,
   rows: PropTypes.number,
+  type: PropTypes.string,
+  isTouched: PropTypes.bool,
+  isValid: PropTypes.bool,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
-  reset: PropTypes.func,
 }
 
 export default TextArea

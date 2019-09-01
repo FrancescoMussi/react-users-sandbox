@@ -1,10 +1,9 @@
 import React from 'react'
-import Button from '../../Buttons/Button'
 import PropTypes from 'prop-types'
 
-const Table = props => {
+import Button from '../../Buttons/Button'
 
-  console.log('table ', {props})
+const Table = props => {
 
   let columns = props.columns.map(item => (
     <th
@@ -44,6 +43,15 @@ const Table = props => {
                 })}
                 {props.showActions ? (
                   <td className="py-4 px-6 border-b border-grey-light">
+                    {props.showGoToPageButton ? (
+                      <Button
+                        type="button"
+                        theme="success"
+                        text="View"
+                        extraClasses={['mr-3']}
+                        onClick={() => props.onGoToView(item)}
+                      />
+                    ) : null}
                     {props.showEditButton ? (
                       <Button
                         type="button"
@@ -75,11 +83,13 @@ const Table = props => {
 Table.propTypes = {
   columns: PropTypes.array.isRequired,
   list: PropTypes.array,
-  onDelete: PropTypes.func,
-  onEdit: PropTypes.func,
   showActions: PropTypes.bool,
   showDeleteButton: PropTypes.bool,
   showEditButton: PropTypes.bool,
+  showGoToPageButton: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onGoToView: PropTypes.func,
+  onDelete: PropTypes.func
 }
 
 export default Table

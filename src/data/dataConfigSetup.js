@@ -1,4 +1,5 @@
-// Put here the form input fields config to leave the component lean
+// Form input fields config
+// They are in a separate file to keep the component
 
 export const inputNameConfig = {
   type: 'text',

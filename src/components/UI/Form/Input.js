@@ -48,17 +48,16 @@ const Input = props => {
 }
 
 Input.propTypes = {
-  errorMessage: PropTypes.string,
-  isTouched: PropTypes.bool,
-  isValid: PropTypes.bool,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   placeholder: PropTypes.string,
   type: PropTypes.string,
+  isTouched: PropTypes.bool,
+  isValid: PropTypes.bool,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
-  reset: PropTypes.func,
 }
 
 export default Input
