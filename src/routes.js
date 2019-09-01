@@ -1,12 +1,11 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-import About from './containers/About/About'
-import UserAdd from './containers/Users/UserAdd'
-import UserDetail from './containers/Users/UserDetail'
-import UserEdit from './containers/Users/UserEdit'
-import Users from './containers/Users/Users'
-
+import About from './pages/About/About'
+import UserAdd from './pages/Users/UserAdd'
+import UserDetail from './pages/Users/UserDetail'
+import UserEdit from './pages/Users/UserEdit'
+import Users from './pages/Users/Users'
 
 const routes = () => (
   <Switch>
@@ -18,5 +17,4 @@ const routes = () => (
   </Switch>
 )
 
-
-export default routes;
+export default routes

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import Header from './containers/Header/Header'
+import Header from './pages/Header/Header'
 import Routes from './routes'
 
 function App() {
@@ -11,4 +11,4 @@ function App() {
     </div>
   )
 }
-export default App;
+export default App
