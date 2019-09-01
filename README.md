@@ -1,12 +1,14 @@
-## Demo (Heroku app)
+## Demo 
+
+**Heroku app:**
 
 https://react-users-sandbox.herokuapp.com/
 
 
 ## Description
 
-Users CRUD app.
-There is user list in the Home.
+It's a Users CRUD app.
+There is the users list in the Home.
 Possibility to add user, edit user, view detail page.
 
 The data is saved in the store.
